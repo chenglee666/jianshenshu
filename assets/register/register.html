@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>register</title>
+<script src="jquery2.1.0/jquery-2.1.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+var c_db = db_create("db_name", "table1","create table table1 (i_id int, i_name varchar(20), i_height int, i_weight int, i_bim int, i_type int))");
+document.write(c_db);
+// 判断是否为数字
+	function isNumber(numStr){
+	   return !isNaN(numStr);
+	}
+// 判斷一個字符串中是否含有下列非法字符	
+	voidChar = "'\"><";
+	function isValidString(szStr){
+	   for(i = 0 ; i < voidChar.length; i ++){
+		 aChar = voidChar.substring(i, i + 1);
+		 if(szStr.indexOf(aChar) > -1){
+		   return false;
+		 }
+	   }
+	   return true;
+	}
+	
+	function trim(szStr){
+// 去掉字符串頭部的空格
+	   while(szStr.length > 0){
+		 if( szStr.substring(0, 1) != ' '){
+		   break;
+		 }else{
+		   szStr = szStr.substring(1);
+		 }
+	   }
+	   //去掉字符串尾部的空格
+	   while(szStr.length > 0){
+		 if( szStr.substring(szStr.length - 1, szStr.length) != ' '){
+		   break;
+		 }else{
+		   szStr = szStr.substring(0,szStr.length - 1);
+		 }
+	   }
+	   return szStr;
+	}
+// 精確判斷字符串長度
+	function isChinese(str)
+	{
+	   var lst = /[u00-uFF]/;      
+	   return !lst.test(str);     
+	}
+	function strlen(str)
+	{
+	   var strlength=0;
+	   for (i=0;i<str.length;i++)
+	{
+		 if (isChinese(str.charAt(i))==true)
+			 strlength=strlength + 2;
+		 else
+			 strlength=strlength + 1;
+	}
+	return strlength;
+	}	
+//判斷字符串中是否存在空格
+	function isKong(szStr)
+	{
+		 //trim方法爲上面去掉字符串首尾空格的方法，不是系統方法
+		 var str=trim(szStr);
+		 if(strlen(str)>0)
+		 {
+			 if(str.indexOf(' ')>=0)
+			 {
+				 return true;
+			 }
+		 }
+		 return false;
+	}
+		
+  $("#button").click(function(){
+// HTML取值  
+	 	var name = trim($("#name").val());
+		var sex = $("input[type='radio']:checked").val();
+		var age = trim($("#age").val());
+		var height = trim($("#height").val());
+		var weight = trim($("#weight").val());
+		var type = $("#type").val();	
+		document.write(type);		
+		
+		var name_ = 0;
+		var age_ = 0;
+		var height_ = 0;
+		var weight_ = 0; 
+		var sex_ = 0;
+		var type_ = 0;
+
+// 验证
+
+		if(isNumber(age)&&(age<=150)&&(age>=5)){
+		//alert(age);
+			age_ = age;
+			//alert(age_);
+		}
+		else{ 
+			age_ = 0;
+			//alert("age number has to be 5-150")	;
+		}	
+		if(isNumber(height)&&(height<=250)&&(height>=1)){
+			height_ = height;
+		}	
+		else{
+			height_ = 0;
+			//alert("height number has to be 1-250");
+		}
+		if(isNumber(weight)&&(height<=500)&&(height>=1)){
+			weight_ = weight;
+		}
+		else{
+			weight_ = 0;
+			//alert("weight number has to be 1-500");
+		}
+		if(!isNumber(name)&&(isChinese(name)<20||strlen(name)<50)&&!isKong(name)){
+			name_ = name;
+			//alert("ok");
+		}
+		else{
+			name_ = 0;
+			//alert("please check");
+		}
+		if((name_&&sex&&age_&&height_&&weight_&&type)==0){
+			alert("U may lost some info");
+			tests(name);	
+			//document.write(name_);
+		}	
+		else{
+		
+			var table_name = "pi";
+			var fields = ["i_id","i_name","i_height","i_weight","i_bmi","i_type"];
+			var value = ["1",name_,height_,weight_,"13",type];	
+			var res = insert_row(table_name, fields, value);
+			
+			alert("Good");
+			//var res = demo.create_account(name_,sex,age_,height_,weight_,type);
+			//if(res)
+			location.href = "../menu/demo/index.html";
+			//location.href = "register_done.html";		
+		}	
+  });
+});
+	
+	
+</script>
+
+<body>
+
+	name<input id="name" /><br />
+	male<input id="sex_m" type="radio" name="sexname"value="1" checked="checked" /><br />
+	female<input id="sex_f" type="radio" name="sexname"value="2" /><br />
+	age<input id="age" /><br />
+	height<input id="height" /><br />
+	weight<input id="weight" /><br />
+	type<select id="type"name="type_name">
+		<option value="1" selected="selected">Fitness</option>
+		<option value="2">Health</option>
+		<option value="3">Stronger</option>
+		</select>
+<button id="button">sub</button>
+
+
+</body>
+</html>

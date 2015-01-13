@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="./menu.css" />
+<script src="./jquery-2.0.0.js"></script>
+<script>
+	$(document).ready(function(){
+		var flg = 1;
+		$a = $("#content");
+		
+	//	$("#id_ul").find("li").after("<hr noshade color="#0066cc">");
+		
+		$("#but1").click(function(){
+			if(flg == 1){
+				//$("#menu").animate({left:'0px'},100);				
+				$a.animate({left:'100px'},160);
+				$a.animate({left:'80px'},80);
+		 		flg = 0;
+			}else{
+				//$("#menu").animate({left:'-100px'},120);
+				$a.animate({left:'-10px'},160);
+				$a.animate({left:'0px'},80);
+				flg = 1;
+			}
+		});
+		$("#content_inner,#menu").click(function(){
+			if(flg==0){
+				//$("#menu").animate({left:'-100px'},120);
+				$a.animate({left:'-10px'},160);
+				$a.animate({left:'0px'},80);
+				flg = 1;
+			}
+		});
+		
+		
+	}); 
+		
+</script>
+</head>
+
+<body>
+	<div id="menu" style="background:#98bf21; height:100%; width:100%; position:fixed; left: 0px; top: 0px;">
+		<ul id="id_ul">
+			<li style="list-style-type:none;"><a href="" style="text-decoration:none; background-color:yellow">Home</a></li>
+			<li style="list-style-type:none;"><a href="../fullcalendar/demos/default.html">My calendar</a></li>
+			<li style="list-style-type:none;"><a href="window.demo.click3()">My profile</a></li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+		</ul>
+    </div>		
+
+	<div id="content" style="float:left;background:#5CACEE; height:100%; width:100%;position:fixed; left: 0px; top: 0px;">
+		<div id="title" style="background:#FFFF99; height:40px; width:100%;position:absolute; left: 0px; top: 0px;">	
+			<button id="but1"  style="background:#FF0033; height:40px; width:100px;position:absolute; left: 0px; top: 0px;">Press</button>
+		</div>
+		<div id="content_inner">
+			<div id="content_icons" style="margin-top:40px">
+			<ul>
+			<li style="list-style-type:none;">Home</li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+						<li style="list-style-type:none;">Home</li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+						<li style="list-style-type:none;">Home</li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+						<li style="list-style-type:none;">Home</li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+						<li style="list-style-type:none;">Home</li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+						<li style="list-style-type:none;">Home</li>
+			<li style="list-style-type:none;">Content</li>
+			<li style="list-style-type:none;">More</li>
+			</ul>
+			</div>
+		</div>
+</div>
+	
+</body>
+</html>

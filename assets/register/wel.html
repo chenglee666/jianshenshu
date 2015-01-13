@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>register</title>
+<script src="jquery2.1.0/jquery-2.1.0.js"></script>
+<script src="db_API.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	var d = db_create("db_name", "pi","create table pi (i_id int, i_name varchar(20), i_height int, i_weight int, i_bmi int, i_type int)");
+	var sql = "select i_id from pi" ;
+	var content = ["i_id"];
+	var res = select_sql(sql,content);
+	//document.write(res);
+	setTimeout(function(){
+		if(res == 'nul'){
+		$(".fade").animate({
+			opacity:'0.0'
+ 		 },"slow",function(){location.href = "1.html";});
+				
+			//document.write("ok");
+		}
+		else{	
+		$(".fade").animate({
+			opacity:'0.0'
+ 		 },"slow",function(){location.href = "../menu/demo/index.html";}); 
+			
+		}
+	},3000);
+});
+</script>
+
+<body>
+<div class="fade"><img src="2.jpg" /></div> 
+</body>
+</html>

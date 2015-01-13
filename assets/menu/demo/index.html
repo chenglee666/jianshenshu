@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<title>jQuery.mmenu demo</title>
+
+		<link type="text/css" rel="stylesheet" href="css/demo.css" />
+		<link type="text/css" rel="stylesheet" href="../src/css/jquery.mmenu.all.css" />
+
+		<script type="text/javascript" src="./jquery/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../src/js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				$('nav#menu').mmenu();
+				
+			});
+		</script>
+
+		
+	</head>
+	<body>
+		<div id="page">
+			<div class="header">
+				<a href="#menu" style="outline: none;"></a>
+				Home
+			</div>
+			<div class="content">	
+				<div id="welcome"><h2> Welcome back ! </br> Today, you got <a onClick="">N</a> missions left </h2></div>	
+
+				<div id="t_k" class="b4" style="outline: none; background:#98bf21; height:110px; width:110px; position:absolute; left: 70px; top: 195px;"></br><strong>Training knowledge</strong></div>
+				
+				<a href="../../fullcalendar/demos/default.html"><div id="m_c" class="b4" style="outline: none; background:#CD4F39; 
+				height:110px; width:110px; position:absolute; left: 185px; top: 195px;"></br></br><strong>My Calendar</strong></div></a>
+				
+				<a href="../../2/index.html"><div id="m_s" class="b4" style="outline: none; background:#FFD700; height:110px; width:110px; position:absolute; left: 70px; top: 310px;"></br></br><strong>My Schedule</strong></div></a>
+				
+				<a onClick="window.demo.click4()"><div id="m_p" class="b4" style="outline: none; background:#5CACEE; height:110px; width:110px; position:absolute; left: 185px; top: 310px;"></br></br><strong>My Profile</strong></div></a>	
+
+			</div>
+
+			
+				<nav id="menu">
+				
+				<ul class="Menu" style="padding-top:0">
+					<li><a href="#about" style="outline: none;"><h2>My first </br>workout </br>book</h2></a>
+					<li><a href="#about">Home</a>
+					<li><a href="#about">Category</a>
+					<!--<li><img src="123.jpg"/></li>-->
+					<li><a href="#about">My Schedule</a>
+					<li><a href="#about">Daily</a>
+					<li><a href="../../fullcalendar/demos/default.html">My calendar</a>								
+					<li><a onClick="window.demo.create_account()">My profile</a>
+					<li><a href="#contact">Share</a>
+					<li><a href="#contact">About us</a>					
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>

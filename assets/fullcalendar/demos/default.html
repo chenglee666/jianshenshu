@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='../fullcalendar.css' rel='stylesheet' />
+<link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='../lib/moment.min.js'></script>
+<script src='../lib/jquery.min.js'></script>
+<script src='../fullcalendar.min.js'></script>
+<script>
+$(document).ready(function() {
+		function aa (){	
+				eval("var j=" + demo.haha());  
+				var events = [];  
+				var info = 3;  
+				for (var i = 0; i < 2; i++) {  
+						var title = j.title;  
+						var evtstart = j.start;  
+						var evtend = j.end;  
+						events.push({  
+						color: "blue",
+						title:title,  
+						start:evtstart,  
+						end:evtend,  
+						});  
+				}  
+				return events;
+		}				  
+		eve = aa();
+		$('#calendar').fullCalendar({
+				aspectRatio: 1.2,
+				editable: true,
+				eventLimit: true, // allow "more" link when too many events
+				events:eve
+		});
+});
+
+</script>
+<style>
+
+	body {
+		outline: none;
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar {
+		outline: none;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+
+
+</style>
+</head>
+<body>
+	
+<!--	<img src="123.png"/>-->
+	<div style=""><div id='calendar'></div></div>
+	
+	<div id='but'>  <a href="../../menu/demo/index.html" ><button>press</button></a></div>
+</body>
+</html>

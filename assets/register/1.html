@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>register</title>
+<script src="jquery2.1.0/jquery-2.1.0.js"></script>
+<script src="db_API.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+//location.href = "../menu/demo/index.html";
+var d = db_create("db_name", "pi","create table pi (i_id int, i_name varchar(20), i_height int, i_weight int, i_bmi int, i_type int)");
+
+//var d = db_create("db_name", "pi","create table pi (i_id int, i_name varchar(20), i_height int, i_weight int, i_bmi int, i_type int)");
+//document.write(c_db);
+  $("#button").click(function(){
+// HTMLȡֵ  
+//document.write("11");
+	 	var name = $("#name").val();
+		var sex = $("input[type='radio']:checked").val();
+		var age = $("#age").val();
+		var height = $("#height").val();
+		var weight = $("#weight").val();
+		var type = $("#type").val();	
+//		document.write(name);	
+//		document.write(sex);		
+//		document.write(age);		
+//		document.write(height);		
+//		document.write(weight);
+//		document.write(type);		
+			
+		var table_name = "pi";
+		var fields = ["i_id","i_name","i_height","i_weight","i_bmi","i_type"];
+		var value = ["1",name,height,weight,"13",type];	
+		var res = insert_row(table_name, fields, value);
+			//var res = demo.create_account(name_,sex,age_,height_,weight_,type);
+			if(res)
+			location.href = "../menu/demo/index.html";
+			//location.href = "register_done.html";		
+  });
+});
+	
+	
+</script>
+
+<body>
+
+	name<input id="name" /><br />
+	male<input id="sex_m" type="radio" name="sexname"value="1" checked="checked" /><br />
+	female<input id="sex_f" type="radio" name="sexname"value="2" /><br />
+	age<input id="age" /><br />
+	height<input id="height" /><br />
+	weight<input id="weight" /><br />
+	type<select id="type"name="type_name">
+		<option value="1" selected="selected">Fitness</option>
+		<option value="2">Health</option>
+		<option value="3">Stronger</option>
+		</select>
+<button id="button">sub</button>
+
+
+</body>
+</html>
